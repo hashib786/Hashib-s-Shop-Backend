@@ -141,7 +141,7 @@ router.get(
     try {
       res.cookie("token", null, {
         expires: new Date(Date.now()),
-        httpOnly: true,
+        httpsOnly: true,
       });
 
       res.status(201).json({
@@ -214,7 +214,7 @@ router.put(
       res.status(200).json({
         success: true,
         User,
-        fileUrl
+        fileUrl,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -254,7 +254,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        user:User,
+        user: User,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -271,7 +271,6 @@ router.delete(
       const userId = req.user._id;
       const addressId = req.params.id;
 
-
       await user.updateOne(
         {
           _id: userId,
@@ -281,13 +280,12 @@ router.delete(
 
       const User = await user.findById(userId);
 
-      res.status(200).json({ success: true, user:User });
+      res.status(200).json({ success: true, user: User });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
   })
 );
-
 
 // update user password
 router.put(
@@ -323,6 +321,5 @@ router.put(
     }
   })
 );
-
 
 module.exports = router;
