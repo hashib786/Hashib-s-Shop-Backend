@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-const allowList = ["http://localhost:3000", "https://hashibs-shop.vercel.app/"];
+const allowList = ["http://localhost:3000", "https://hashibs-shop.vercel.app"];
 app.use(
   cors((req, callback) => {
     let corsOptions;
