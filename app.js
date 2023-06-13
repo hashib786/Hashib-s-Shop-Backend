@@ -16,14 +16,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-const allowList = ["http://localhost:3000", "https://hashibs-shop.vercel.app"];
 app.use(
-  cors((req, callback) => {
-    let corsOptions;
-    allowList.indexOf(req.header("Origin")) !== -1
-      ? (corsOptions = { origin: true }) // reflect (enable) the requested origin in the CORS response
-      : (corsOptions = { origin: false }); // disable CORS for this request
-    callback(null, corsOptions); // callback expects two parameters: error and options
+  cors({
+    origin: "https://hashibs-shop.vercel.app",
+    credentials: true,
   })
 );
 app.use("/", express.static("uploads"));
