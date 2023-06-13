@@ -142,6 +142,7 @@ router.get(
       res.cookie("token", null, {
         expires: new Date(Date.now()),
         httpOnly: true,
+        sameSite: "none",
         secure: true,
       });
 
