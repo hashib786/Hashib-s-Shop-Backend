@@ -16,12 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://hashibs-shop.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use("/", express.static("uploads"));
 app.use(urlencoded({ extended: true }));
 
